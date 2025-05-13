@@ -1,0 +1,18 @@
+Characteristic,Description
+Structural,It evaluates the connections within an ontology and the attributes of the graph.
+Functional Adequacy,Functional Adequacy describes the capability to provide concrete functions. 
+Compatibility,Compatibility describes the ability of at least two software components to exchange information and/or to perform their required functions while sharing a hardware or software environment. 
+Transferability,Transferability describes the degree to which software can be transferred from one environment to another. 
+Operability,Operability is concerned with the effort that is needed to use the ontology  by stated or implied users. 
+Maintainability,"Maintainability describes the capability of ontologies to be modified for changing environments, requirements, or functional specifications. "
+Quality in Use,"The characteristic Quality in Use measures how a 
+product used by specific users meets their needs to 
+achieve their goals. It is the quality in a particular 
+context of use. Unlike the other quality criteria, this 
+characteristic does describe additional sub 
+characteristics. "
+Performance Efficiency,"Performance Efficiency describes the 
+relationship between software performance and 
+resource consumption under stated conditions. "
+Reliability," Reliability is concerned with maintaining the 
+level of performance under the stated conditions. "

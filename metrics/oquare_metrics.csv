@@ -1,0 +1,17 @@
+Metric,5 (Best),4,3,2,1 (Worst)
+ANOnto,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+AROnto,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+CBOnto,1 to 3,3 to 6,6 to 8,8 to 12,> 12
+CROnto,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+DITOnto,1 to 2,2 to 4,4 to 6,6 to 8,> 8
+INROnto,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+NACOnto,1 to 2,2 to 4,4 to 6,6 to 8,> 8
+NOCOnto,1 to 2,2 to 4,4 to 6,6 to 8,> 8
+NOMOnto,<= 2,2 to 4,4 to 6,6 to 8,> 8
+LCOMOnto,<= 2,2 to 4,4 to 6,6 to 8,> 8
+RFCOnto,1 to 3,3 to 6,6 to 8,8 to 12,> 12
+RROnto,>0. 8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+TMOnto,1 to 2,2 to 4,4 to 6,6 to 8,> 8
+WMCOnto,1 to 2,2 to 4,4 to 6,6 to 8,> 8
+PRONTO,>0. 8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+PONTO,>0. 8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2

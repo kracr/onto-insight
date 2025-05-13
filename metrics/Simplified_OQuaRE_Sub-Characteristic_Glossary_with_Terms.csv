@@ -1,0 +1,25 @@
+Sub-Characteristic (Code),Term,Simplified Meaning
+Formal Relations Support (C1.2),Relation Formality,Ontology supports formal relations beyond taxonomy
+Redundancy (C1.3),Non-Redundancy,All knowledge items are informative (no duplication)
+Tangledness (C1.6),Inheritance Simplicity,Multi-inheritance is minimized
+Cohesion (C1.8),Class Cohesion,Classes are strongly related
+Controlled Vocabulary (C2.2),Term Uniformity,Heterogeneity of terms is avoided
+Schema & Value Reconciliation (C2.3),Interoperability,Provides a common data model for interoperability
+Consistent Search & Query (C2.4),Query Support,Ontology structure guides search/query
+Knowledge Acquisition (C2.5),Knowledge Capturing,Capability to represent acquired knowledge (instances)
+Clustering (C2.6),Term Grouping,Annotations enable grouping of terms
+Similarity (C2.7),Comparability,Components can be compared for similarity
+Indexing & Linking (C2.8),Indexability,Classes serve as indexes for retrieval
+Result Representation (C2.9),Output Analysis,Can analyze complex results
+Guidance (C2.12),Domain Guidance,Guides specification of domain knowledge
+Decision Trees (C2.13),Decision Support,Supports building decision trees
+Knowledge Reuse (C2.14),Reusability,Ontology can be used to build other ontologies
+Inference (C2.15),Inference Capability,Enables using reasoners to infer new knowledge
+Replaceability (C3.1),Ontology Replacement,Can replace another ontology for same task
+Adaptability (C4.2),Adaptability,Can be adapted to different environments
+Learnability (C5.2),Learnability,Users can easily learn the ontology
+Modularity (C6.1),Component Separation,Ontology is divided into independent components
+Reusability (C6.2),Reuse in Others,Parts of the ontology can be reused in others
+Analyzability (C6.3),Issue Diagnosability,Ontology can be diagnosed for issues
+Changeability (C6.4),Modifiability,Ontology can be easily modified
+Modification Stability (C6.5),Stability on Change,Avoiding unexpected effects of changes

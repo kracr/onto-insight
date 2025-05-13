@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Build output directories
+target/
+output/
+reports/
+.infinity_cache/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml
+w
+# OS specific files
+.DS_Store
+Thumbs.db 

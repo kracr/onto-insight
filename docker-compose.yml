@@ -1,0 +1,26 @@
+services:
+  btp-tool:
+    container_name: btp-tool
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - btp_output:/app/output
+      - btp_ontologies:/app/ontologies
+      - ./.env:/app/.env
+    environment:
+      - MODEL_NAME=${MODEL_NAME}
+      - AI_API_KEY=${AI_API_KEY}
+      - AI_URL=${AI_URL}
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "test", "-e", "/app/start.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  btp_output:
+  btp_ontologies:

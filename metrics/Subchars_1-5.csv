@@ -1,0 +1,25 @@
+,5,4,3,2,1
+Formal Relations Support,> 0. 8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+Redundancy,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+Tangledness,> 8,6 to 8,4 to 6,2 to 4,1 to 2
+Cohesion,> 8,6 to 8,4 to 6,2 to 4,<= 2
+Controlled Vocabulary,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+Schema & Value Reconciliation,> 1.6,1.2 - 1.6,1.2 - 0.8,0.8  - 0.4,< 0.4
+Consistent Search & Query ,> 3.2,2.4 - 3.2,2.4 - 1.6,1.6 - 0.8,< 0.8
+Knowledge Acquisition,> 9.6,7.2 - 9.6,7.2 - 4.8,4.8 - 2.4,<= 2.4
+Clustering,> 0.8,0.6 - 0.8,0.6 - 0.4,0.4 - 0.2,< 0.2
+Similarity,> 1.6,1.2 - 1.6,1.2 - 0.8,0.8  - 0.4,< 0.4
+Indexing & Linking,> 2.4,1.8 - 2.4,1.8 - 1.2,1.2 - 0.6,< 0.6
+Result Representation,> 1.6,1.2 - 1.6,1.2 - 0.8,0.8 - 0.4,< 0.4
+Guidance,> 1.6,1.2 - 1.6,1.2 - 0.8,0.8 - 0.4,< 0.4
+Decision Trees ,> 9.6,7.2 - 9.6,7.2 - 4.8,4.8 - 2.4,< 2.4
+Inference,> 1.6,1.2 - 1.6,1.2 - 0.8,0.8 - 0.4,< 0.4
+Knowledge Reuse,> 18.4,13.8 - 18.4,13.8 - 9.2,4.6 - 9.2,<= 4.6
+Replaceability,> 32,24 - 32,16 - 24,16 - 8,<= 8
+Adapatability,> 56,40 - 56,28 - 40,14 - 28,<= 14
+Learnability,> 56,40 - 56,28 - 40,14 - 28,<= 14
+Modularity,> 20,14 - 20,10 to 14,5 to 10,2 to 5
+Reuseability,> 56,40 - 56,28 - 40,14 - 28,<= 14
+Analyzability,> 56,40 - 56,28 - 40,14 - 28,<= 14
+Changeability,> 64,46 - 64,32 - 46,16 - 32,<= 16
+Modification Stability ,> 40,28 - 40,20 - 28,20 to 10,<= 10

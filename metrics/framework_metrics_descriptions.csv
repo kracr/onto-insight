@@ -1,0 +1,30 @@
+QualityFramework,Metric_Name,Description,Best_Score,Worst_Score,CalculationFormula
+OQuaRE,ANOnto,ANOnto measures the mean number of annotations per class in the ontology. It reflects the extent of additional information or metadata associated with class definitions.,>0.8,<0.2,(annotationAsserionAxioms + generalAnnotationAxioms)/classes
+OQuaRE,AROnto,AROnto measures the mean number of attributes (properties) per class in the ontology. It reflects the complexity and richness of attribute definitions within class definitions.,>0.8,<0.2,(dataPropertyDomainAxioms + objectPropertyDomainAxioms)/classes
+OQuaRE,CBOnto,CBOOnto quantifies the number of related classes in the ontology. It assesses the interdependence or coupling between classes.,1-3,>12,superClasses/(classes-rootClasses)
+OQuaRE,CBOnto2,Coupling between Objects: Number of related classes. Not taking rootclass into account.,1-3,>12,superClasses/classes
+OQuaRE,CROnto,CROnto evaluates the mean number of instances (individuals) per class in the ontology. It reflects the diversity and abundance of instances within class definitions.,>0.8,<0.2,classAssertionAxioms/classes
+OQuaRE,DITOnto,DITOnto measures the length of the longest path from the root class (usually ’Thing’) to a leaf class within the ontology. It indicates the depth or hierarchical complexity of the ontology.,1-2,>8,maximalDepth
+OQuaRE,INROnto,INROnto calculates the mean number of relationships (object properties) per class in the ontology. It provides insights into the complexity and richness of relationships between classes.,>0.8,<0.2,subClassOfAxioms/classes
+OQuaRE,LCOMOnto,This metric measures the semantic and conceptual relatedness of classes in an ontology. It quantifies the separation of responsibilities and independence of components within the ontology.,1-2,>8,Summation of Length of Path i from root to leaf/Summation of leaf classes i
+OQuaRE,NACOnto,This metric calculates the mean number of ancestor classes per leaf class in the ontology. It reflects the inheritance hierarchy and relationships between classes.,1-2,>8,superClassesOfLeafClasses/absoluteLeafCardinality
+OQuaRE,NOCOnto,NOCOnto measures the mean number of direct subclasses for each class in the ontology. It indicates the breadth or branching factor of the ontology hierarchy.,1-2,>8,subClassOfAxioms/(classes - rootClasses)
+OQuaRE,NOMOnto,NOMOnto calculates the average number of properties per class in the ontology. It provides insights into the richness and diversity of property definitions within the ontology.,1-2,>8,(dataPropertyAssertionAxioms + objectPropertiesOnClasses)/classes
+OQuaRE,PONTO,It represents the ancestors per class,>0.8,<0.2,superClasses/classes
+OQuaRE,PRONTO,"Number of subclassof relationships divided by the 
+number of subclassof relationships and properties",>0.8,<0.2,subClassOfAxioms/(dataPropertyAssertionAxioms+objectPropertiesOnClasses+subClassOfAxioms)
+OQuaRE,RFCOnto,"RFCOnto measures the number of properties di
+rectly accessible from each class in the ontology. It reflects the complexity and richness of
+ class definitions in terms of their associated properties",1-3,>12,(subClassOfAxioms/(classes-rootClasses))*(datapropertyAssertionAxioms+objectPropertyOnClasses)
+OQuaRE,RROnto," RROnto evaluates the number of properties defined
+ in the ontology relative to the total number of relationships and properties. It assesses the
+ richness and diversity of property definitions within the ontology",>0.8,<0.2,(dataPropertyAssertionAxioms+objectPropertiesOnClasses)/(dataPropertyAssertionAxioms+objectPropertiesOnClasses+subClassOfAxioms)
+OQuaRE,TMOnto," TMOntoevaluatesthemeannumberofparentsperclass in the
+ ontology, considering multiple inheritance. It reflects the complexity and interdependence
+ of class hierarchies.",1-2,>8,superClasses/classes
+OQuaRE,TMOnto2,"Mean number of classes 
+with more than 1 direct ancestor",1-2,>8,superClassesOfClassesWithMultipleInheritance/classesWithMultipleInheritance
+OQuaRE,WMCOnto,"WMCOnto calculates the mean number
+ of properties and relationships per class in the ontology. It provides insights into the
+ complexity and richness of class definitions",1-2,>8,(dataPropertyAssertionAxioms+objectPropertiesOnClasses+subClassOfAxioms)/classes
+OQuaRE,WMCOnto2,"It is the summation of path i from root to leaf divided by summation of leaves",1-2,>8,pathsToLeafClasses/absoluteLeafCardinality

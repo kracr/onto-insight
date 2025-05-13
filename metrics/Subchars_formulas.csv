@@ -1,0 +1,25 @@
+Sub-characteristic,Formula
+Formal Relations Support,+RROnto
+Redundancy,+ANOnto
+Tangledness,-TMOnto
+Cohesion,-LCOMOnto
+Controlled Vocabulary,+ANOnto
+Schema & Value Reconciliation,AROnto+RROnto
+Consistent Search & Query ,ANOnto+AROnto+INROnto+RROnto
+Knowledge Acquisition,ANOnto+RROnto-NOMOnto
+Clustering,+ANOnto
+Similarity,AROnto+RROnto
+Indexing & Linking,AROnto+RROnto+INROnto
+Result Representation,AROnto+CROnto
+Guidance,AROnto+INROnto
+Decision Trees ,AROnto+INROnto-TMOnto
+Knowledge Reuse,ANOnto+AROnto+INROnto-NOMOnto-LCOMOnto
+Inference,RROnto+CROnto
+Replaceability,-DITOnto-NOCOnto-NOMOnto-WMCOnto
+Adapatability,-CBOOnto-DITOnto-NOCOnto-NOMOnto-RFCOnto-WMCOnto
+Learnability,-CBOnto-NOCOnto-NOMOnto-LCOMOnto-RFCOnto-WMCOnto
+Modularity,-CBOnto-WMCOnto
+Reuseability,-CBOnto-DITOnto-NOCOnto-NOMOnto-RFCOnto-WMCOnto
+Analyzability,-CBOnto-DITOnto-NOMOnto-LCOMOnto-RFCOnto-WMCOnto
+Changeability,-CBOnto-DITOnto-NOCOnto-NOMOnto-LCOMOnto-RFCOnto-WMCOnto
+Modification Stability ,-CBOnto-NOCOnto-LCOMOnto-RFCOnto
