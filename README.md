@@ -100,7 +100,7 @@ For metrics related documentation refer [metrics_documentation](./metrics_docume
 
 ## Tool Testing Reports
 
-Our team has done extensive perturbation testing on different ontologies of varying sizes in order to validate outcomes. For results, reder [Tool_Perturbation_Evaluation_Report](./Tool_Perturbation_Evaluation_Report.md)
+Our team has done extensive perturbation testing on different ontologies of varying sizes in order to validate outcomes. For results, refer [Tool_Perturbation_Evaluation_Report](./Tool_Perturbation_Evaluation_Report.md)
 
 ## Contributing
 
@@ -120,7 +120,7 @@ For issues and feature requests, please use the GitHub issue tracker.
 
 ## Any Reviews?
 
-Our team is actively conducting user study in order to track feedback and do improvements in future versions of the tool if required. If you liked the tool or have any suggestions for its improvement then please do take out time to fill our user study form (it will hardly take 2 minutes!):
+We are currently conducting a user study to gather feedback and identify opportunities for improving future versions of the tool. If you found the tool helpful or have suggestions for enhancement, we would greatly appreciate it if you could take just 2 minutes to fill out our short feedback form:
 https://forms.gle/S2WpcXCf7mHar2D39
 
 Thank You!
