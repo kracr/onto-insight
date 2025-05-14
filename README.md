@@ -98,6 +98,10 @@ All outputs are saved to the `output/` directory and include:
 
 For metrics related documentation refer [metrics_documentation](./metrics_documentation.md)
 
+## Tool Testing Reports
+
+Our team has done extensive perturbation testing on different ontologies of varying sizes in order to validate outcomes. For results, reder [Tool_Perturbation_Evaluation_Report](./Tool_Perturbation_Evaluation_Report.md)
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -113,3 +117,10 @@ Citation information will be added in a future update.
 ## Support
 
 For issues and feature requests, please use the GitHub issue tracker.
+
+## Any Reviews?
+
+Our team is actively conducting user study in order to track feedback and do improvements in future versions of the tool if required. If you liked the tool or have any suggestions for its improvement then please do take out time to fill our user study form (it will hardly take 2 minutes!):
+https://forms.gle/S2WpcXCf7mHar2D39
+
+Thank You!
