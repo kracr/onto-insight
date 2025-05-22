@@ -46,6 +46,10 @@ print_step() {
     echo -e "${MAGENTA}[STEP $1]${RESET} $2"
 }
 
+print_api_status() {
+    echo -e "${CYAN}[API]${RESET} $1"
+}
+
 print_table() {
     # Prints a formatted table from key-value pairs
     echo -e "${BOLD}${UNDERLINE}$1:${RESET}"
@@ -279,6 +283,7 @@ case $choice in
                 case $rec_choice in
                     1)
                         print_step "4" "Generating basic recommendations"
+                        print_progress "Starting to generate basic recommendations..."
                         REPORT_FILE="$OUTPUT_DIR/reports/${BASE_NAME}_basic_recommendations.md"
                         python3 src/basic_recom.py "$CNL_OUTPUT" "$METRICS_JSON" "$SEED_TERMS_JSON" "$REPORT_FILE" > /dev/null 2>&1
                         
@@ -301,28 +306,40 @@ case $choice in
                         ;;
                     2)
                         print_step "4" "Generating advanced technical recommendations"
+                        print_progress "Starting API request to generate recommendations..."
                         REPORT_FILE="$OUTPUT_DIR/reports/${BASE_NAME}_advanced_recommendations.md"
-                        python3 src/adv_recom.py "$CNL_OUTPUT" "$METRICS_JSON" "$SEED_TERMS_JSON" --output-dir "$OUTPUT_DIR/reports" --output-file "$REPORT_FILE" > /dev/null 2>&1
                         
-                        # Verify the file exists
-                        if [ -f "$REPORT_FILE" ]; then
-                            print_success "Advanced recommendations generated"
-                            track_output "Recommendations" "$REPORT_FILE"
-                        else
-                            # Check for .md extension as the scripts now save with .md
-                            MD_REPORT_FILE="${REPORT_FILE%.txt}.md"
-                            if [ -f "$MD_REPORT_FILE" ]; then
-                                print_success "Advanced recommendations generated" 
-                                track_output "Recommendations" "$MD_REPORT_FILE"
-                                REPORT_FILE="$MD_REPORT_FILE"
+                        # Run the Python script and capture its output
+                        API_OUTPUT=$(python3 src/adv_recom.py "$CNL_OUTPUT" "$METRICS_JSON" "$SEED_TERMS_JSON" --output-dir "$OUTPUT_DIR/reports" --output-file "$REPORT_FILE" < /dev/null 2>&1)
+                        API_STATUS=$?
+
+                        if [ $API_STATUS -eq 0 ]; then
+                            print_api_status "API request completed successfully"
+                            if [ -f "$REPORT_FILE" ]; then
+                                print_success "Advanced recommendations generated"
+                                track_output "Recommendations" "$REPORT_FILE"
                             else
-                                print_error "Report was not saved to $REPORT_FILE, check for errors"
-                                track_output "ERROR: Recommendations" "Failed to generate"
+                                # Check for .md extension as the scripts now save with .md
+                                MD_REPORT_FILE="${REPORT_FILE%.txt}.md"
+                                if [ -f "$MD_REPORT_FILE" ]; then
+                                    print_success "Advanced recommendations generated" 
+                                    track_output "Recommendations" "$MD_REPORT_FILE"
+                                    REPORT_FILE="$MD_REPORT_FILE"
+                                else
+                                    print_error "Report was not saved to $REPORT_FILE"
+                                    print_error "API Output: $API_OUTPUT"
+                                    track_output "ERROR: Recommendations" "Failed to generate"
+                                fi
                             fi
+                        else
+                            print_error "API request failed with status $API_STATUS"
+                            print_error "API Output: $API_OUTPUT"
+                            track_output "ERROR: Recommendations" "Failed to generate"
                         fi
                         ;;
                     *)
                         print_warning "Invalid choice, generating basic recommendations by default"
+                        print_progress "Starting to generate default basic recommendations..."
                         REPORT_FILE="$OUTPUT_DIR/reports/${BASE_NAME}_basic_recommendations.md"
                         python3 src/basic_recom.py "$CNL_OUTPUT" "$METRICS_JSON" "$SEED_TERMS_JSON" "$REPORT_FILE" > /dev/null 2>&1
                         if [ -f "$REPORT_FILE" ]; then
@@ -418,6 +435,7 @@ case $choice in
             case $rec_choice in
                 1)
                     print_step "6" "Generating basic recommendations for module"
+                    print_progress "Starting to generate basic recommendations for module..."
                     REPORT_FILE="$OUTPUT_DIR/reports/module_basic_recommendations.md"
                     python3 src/basic_recom.py "$MODULE_CNL" "$MODULE_METRICS" "$SEED_TERMS_JSON" "$REPORT_FILE" > /dev/null 2>&1
                     if [ -f "$REPORT_FILE" ]; then
@@ -430,6 +448,7 @@ case $choice in
                     ;;
                 2)
                     print_step "6" "Generating advanced recommendations for module"
+                    print_progress "Starting to generate advanced recommendations for module..."
                     REPORT_FILE="$OUTPUT_DIR/reports/module_advanced_recommendations.md"
                     python3 src/adv_recom.py "$MODULE_CNL" "$MODULE_METRICS" "$SEED_TERMS_JSON" --output-dir "$OUTPUT_DIR/reports" --output-file "$REPORT_FILE" > /dev/null 2>&1
                     if [ -f "$REPORT_FILE" ]; then
@@ -442,6 +461,7 @@ case $choice in
                     ;;
                 *)
                     print_warning "Invalid choice, generating basic recommendations by default"
+                    print_progress "Starting to generate default basic recommendations for module..."
                     REPORT_FILE="$OUTPUT_DIR/reports/module_basic_recommendations.md"
                     python3 src/basic_recom.py "$MODULE_CNL" "$MODULE_METRICS" "$SEED_TERMS_JSON" "$REPORT_FILE" > /dev/null 2>&1
                     if [ -f "$REPORT_FILE" ]; then

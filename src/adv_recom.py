@@ -382,34 +382,9 @@ class AdvancedRecommendations:
             print(f"   - {range_info}")
             
         print("\n===================================================")
-        print("Select metrics to focus on (comma-separated numbers, e.g., 1,3,5):")
-        print("Or press Enter to focus on all of them")
-        
-        try:
-            selection = input("> ").strip()
-            if not selection:
-                # User pressed Enter, use all metrics
-                logger.info("User selected all displayed metrics")
-                return [m[0] for m in display_metrics]
-                
-            # Parse user selection
-            selected_indices = [int(idx.strip()) - 1 for idx in selection.split(",")]
-            selected_metrics = []
-            
-            for idx in selected_indices:
-                if 0 <= idx < len(display_metrics):
-                    selected_metrics.append(display_metrics[idx][0])
-                else:
-                    logger.warning(f"Invalid index: {idx+1}, ignoring")
-            
-            if not selected_metrics:
-                logger.warning("No valid metrics selected, using all worst metrics")
-                return [m[0] for m in display_metrics]
-                
-            return selected_metrics
-        except Exception as e:
-            logger.warning(f"Error parsing selection: {e}, using all worst metrics")
-            return [m[0] for m in display_metrics]
+        # Automatically select all worst metrics without prompting
+        logger.info("Auto-selecting all worst metrics")
+        return [m[0] for m in display_metrics]
 
     def generate_advanced_recommendations(self, cnl_text: str, metrics_data: str, seed_terms_json_path: str, output_dir: str = None, output_file: str = None) -> Tuple[str, str]:
         """Generate advanced, technical recommendations using CNL text, metrics, and seed terms"""
@@ -422,22 +397,10 @@ class AdvancedRecommendations:
             
             metrics_info = self._extract_metrics(metrics_data)
             
-            # Ensure we have some worst metrics to work with
-            if not metrics_info.get("worst_metrics"):
-                logger.warning("No worst metrics identified. Using all metrics sorted by score.")
-                # If no metrics are in "worst" range, just use the lowest scoring ones
-                all_metrics = list(metrics_info.get("all_metrics", {}).items())
-                sorted_metrics = sorted(all_metrics, key=lambda x: x[1])[:5]
-                metrics_info["worst_metrics"] = sorted_metrics
-            
-            # Display worst metrics and get user selection
-            selected_metrics = self.display_worst_metrics(metrics_info)
-            
-            if not selected_metrics:
-                logger.warning("No metrics selected, using all worst metrics")
-                selected_metrics = [m[0] for m in metrics_info.get("worst_metrics", [])[:5]]
-            
-            logger.info(f"Selected metrics for focused analysis: {', '.join(selected_metrics)}")
+            # Auto-select the top worst metrics without prompting
+            worst_list = metrics_info.get("worst_metrics", [])
+            selected_metrics = [m[0] for m in worst_list[:min(5, len(worst_list))]]
+            logger.info(f"Auto-selected worst metrics: {', '.join(selected_metrics)}")
             
             # Filter worst metrics to only include selected ones
             filtered_worst_metrics = [m for m in metrics_info.get("worst_metrics", []) if m[0] in selected_metrics]
