@@ -127,9 +127,10 @@ class OntologyModuleExtractor:
             logger.warning(f"Error getting metric range info: {e}")
             return "Range information not available"
 
-    def select_worst_metric_for_module(self, metrics_data_path: str) -> Tuple[str, List[str]]:
+    def select_worst_metric_for_module(self, metrics_data_path: str, auto_select: bool = False) -> Tuple[str, List[str]]:
         """
         Display the worst metrics and let user select which one to use for creating a module.
+        If auto_select is True, automatically selects the worst metric without user interaction.
         Returns the selected metric name and its associated seed terms.
         """
         try:
@@ -152,37 +153,45 @@ class OntologyModuleExtractor:
             # Get the top 3 worst metrics (or all if fewer than 3)
             display_metrics = worst_metrics[:min(3, len(worst_metrics))]
             
-            print("\n===================================================")
-            print("=== TOP 3 WORST PERFORMING METRICS FOR MODULE =====")
-            print("===================================================")
+            # Check if we should auto-select or if stdin is not available (non-interactive mode)
+            is_interactive = auto_select == False and sys.stdin.isatty()
             
-            for i, (metric, score) in enumerate(display_metrics, 1):
-                description = self._get_metric_description(metric)
-                range_info = self._get_metric_range_info(metric)
+            if is_interactive:
+                print("\n===================================================")
+                print("=== TOP 3 WORST PERFORMING METRICS FOR MODULE =====")
+                print("===================================================")
                 
-                print(f"\n{i}. {metric}: {score}")
-                print(f"   - Description: {description[:100]}...")
-                print(f"   - {range_info}")
+                for i, (metric, score) in enumerate(display_metrics, 1):
+                    description = self._get_metric_description(metric)
+                    range_info = self._get_metric_range_info(metric)
+                    
+                    print(f"\n{i}. {metric}: {score}")
+                    print(f"   - Description: {description[:100]}...")
+                    print(f"   - {range_info}")
+                    
+                print("\n===================================================")
+                print("Select a metric to use for module extraction (1-3):")
+                print("Or press Enter to use the worst metric (option 1)")
                 
-            print("\n===================================================")
-            print("Select a metric to use for module extraction (1-3):")
-            print("Or press Enter to use the worst metric (option 1)")
-            
-            selection = input("> ").strip()
-            
-            # Default to the worst metric if no selection is made
-            if not selection:
-                selected_index = 0
-                logger.info(f"No selection made. Using worst metric: {display_metrics[0][0]}")
-            else:
-                try:
-                    selected_index = int(selection) - 1
-                    if selected_index < 0 or selected_index >= len(display_metrics):
-                        logger.warning(f"Invalid selection {selection}. Using worst metric.")
-                        selected_index = 0
-                except ValueError:
-                    logger.warning(f"Invalid input: {selection}. Using worst metric.")
+                selection = input("> ").strip()
+                
+                # Default to the worst metric if no selection is made
+                if not selection:
                     selected_index = 0
+                    logger.info(f"No selection made. Using worst metric: {display_metrics[0][0]}")
+                else:
+                    try:
+                        selected_index = int(selection) - 1
+                        if selected_index < 0 or selected_index >= len(display_metrics):
+                            logger.warning(f"Invalid selection {selection}. Using worst metric.")
+                            selected_index = 0
+                    except ValueError:
+                        logger.warning(f"Invalid input: {selection}. Using worst metric.")
+                        selected_index = 0
+            else:
+                # Auto-select mode or non-interactive mode
+                selected_index = 0
+                logger.info(f"Auto-selecting worst metric: {display_metrics[0][0]}")
             
             selected_metric = display_metrics[selected_index][0]
             logger.info(f"Selected metric for module extraction: {selected_metric}")
@@ -191,8 +200,9 @@ class OntologyModuleExtractor:
             tied_metrics = [m[0] for m in display_metrics if m[1] == display_metrics[selected_index][1]]
             if len(tied_metrics) > 1:
                 logger.info(f"Found tied metrics with same score: {', '.join(tied_metrics)}")
-                print(f"\nNote: There are {len(tied_metrics)} metrics with the same score.")
-                print(f"Will create modules for all tied metrics: {', '.join(tied_metrics)}")
+                if is_interactive:
+                    print(f"\nNote: There are {len(tied_metrics)} metrics with the same score.")
+                    print(f"Will create modules for all tied metrics: {', '.join(tied_metrics)}")
                 return "tied", tied_metrics
             
             return selected_metric, [selected_metric]
@@ -444,7 +454,8 @@ class OntologyModuleExtractor:
             return None
 
     def process_ontology_modularization(self, ontology_path: str, metrics_json_path: str, 
-                                        seed_terms_json_path: str, output_dir: str = "output/ontologies/modules"):
+                                        seed_terms_json_path: str, output_dir: str = "output/ontologies/modules", 
+                                        auto_select: bool = True):
         """
         Process ontology modularization workflow:
         1. Select worst metric
@@ -455,7 +466,7 @@ class OntologyModuleExtractor:
         """
         try:
             # Select worst metric for module extraction
-            selected_metric, metrics_to_process = self.select_worst_metric_for_module(metrics_json_path)
+            selected_metric, metrics_to_process = self.select_worst_metric_for_module(metrics_json_path, auto_select)
             
             created_modules = []
             
