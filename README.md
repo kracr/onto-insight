@@ -71,6 +71,9 @@ Run the tool using the provided script:
 ```bash
 ./run.sh ./ontologies/example.owl FULL ADVANCED
 ```
+### HELP:
+
+Please press 'enter' if stuck on the CLI
 
 ## Pipeline Overview
 
