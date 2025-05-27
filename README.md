@@ -71,9 +71,9 @@ Run the tool using the provided script:
 ```bash
 ./run.sh ./ontologies/example.owl FULL ADVANCED
 ```
-### HELP:
+### Default API keys:
 
-Please press 'enter' if stuck on the CLI
+Free default API keys that are compatible with this project can be generated from https://aistudio.google.com/
 
 ## Pipeline Overview
 
