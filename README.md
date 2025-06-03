@@ -101,6 +101,21 @@ All outputs are saved to the `output/` directory and include:
 
 For metrics related documentation refer [metrics_documentation](./metrics_documentation.md)
 
+### Structured CSVs used for OQuaRE interpretation
+
+| **CSV Name**                                 | **Purpose**                                              |
+|----------------------------------------------|----------------------------------------------------------|
+| `oquare_metrics.csv`                         | Scoring thresholds (1–5) for each metric                 |
+| `Subchars_1-5.csv`                           | Scoring thresholds (1–5) for each sub-characteristic     |
+| `Simplified_Metric_Glossary.csv`             | Plain-language definitions of metrics                    |
+| `Simplified_Sub-Characteristic_Glossary.csv` | Simplified terms for sub-characteristics                 |
+| `Subchars_formulas.csv`                      | Sub-characteristics defined as formulas over metrics     |
+| `char_subchar_rel.csv`                       | Maps quality dimensions to related sub-characteristics   |
+| `subcharacterstic_descriptions.csv`          | Full descriptions of sub-characteristics                 |
+| `framework_metrics_desc.csv`                 | Technical details and rationale for each metric          |
+| `characterstics_descriptions.csv`            | Descriptions of top-level quality dimensions             |
+| `oquare_characterstics.csv`                  | Alternate formatting of characteristics for internal use |
+
 ## Tool Testing Reports
 
 Our team has done extensive perturbation testing on different ontologies of varying sizes in order to validate outcomes. For results, refer [Tool_Perturbation_Evaluation_Report](./Tool_Perturbation_Evaluation_Report.md)
