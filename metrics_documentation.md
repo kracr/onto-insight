@@ -119,7 +119,7 @@ The tool evaluates ontologies using 16 OQuaRE metrics mapped to 26 ISO/IEC 25010
 
 ### Sub-characteristics
 
-The metrics are mapped to 26 sub-characteristics across 8 quality characteristics:
+The metrics are mapped to 24 sub-characteristics across 8 quality characteristics:
 
 #### Structural Characteristics
 
