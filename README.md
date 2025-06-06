@@ -133,8 +133,22 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 Citation information will be added in a future update.
 
 ## Support
+See issue tracker for more information
+# Important Note for Running the Script
+If you encounter the error:
+✗ JAR file not found at target/calculation_engine-1.0-SNAPSHOT-jar-with-dependencies.jar
 
-For issues and feature requests, please use the GitHub issue tracker.
+# Solution:
+The script must be executed from inside the Docker container. Use:
+
+bash
+docker exec -it <container_name_or_id> /bin/bash
+cd /app
+./run.sh ./ontologies/your_ontology.owl <MODE> <LEVEL>
+Replace <container_name_or_id> with your Docker container's name or ID (e.g., f06f43dec540).
+
+# Why?
+The JAR file is built inside the container, and paths are configured for the container's filesystem. Running externally (host machine) may fail due to path mismatches.
 
 ## Any Reviews?
 
