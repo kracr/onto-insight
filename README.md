@@ -97,6 +97,30 @@ All outputs are saved to the `output/` directory and include:
 - CNL representation (TXT)
 - Final recommendations (Markdown)
 
+  Outputs Produced
+
+OntoInsight generates two main outputs, along with some by-products for traceability:
+
+Recommendation Reports (Markdown)
+
+Saved under output/reports/ (or user-specified path).
+
+Structured, human-readable feedback for ontology improvement.
+
+API Response Bundle (JSON)
+
+Returned via api.py, containing:
+
+report: LLM-generated recommendations
+
+metrics: OQuaRE scores
+
+seed_terms: Low-quality terms
+
+cnl: Controlled Natural Language (TXT)
+
+Enables traceability from recommendations back to metrics and ontology content.
+
 ## Evaluation Metrics and Subcharacteristic Description
 
 For metrics related documentation refer [metrics_documentation](./metrics_documentation.md)
