@@ -154,7 +154,7 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 
 ## Citation
 
-Citation information will be added in a future update.
+Sammi, D., Bhushan, L., Mutharaju, R., Shimizu, C. (2026). OntoInsight - A Metric-Guided Tool for Ontology Quality Evaluation with LLM-Powered Recommendations. In: Bork, D., Lukyanenko, R., Sadiq, S., Bellatreche, L., Pastor, O. (eds) Conceptual Modeling. ER 2025. Lecture Notes in Computer Science, vol 16189. Springer, Cham. https://doi.org/10.1007/978-3-032-08623-5_21
 
 ## Support
 See issue tracker for more information
